@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Box, Heading, Text, Input, Button, VStack } from "@chakra-ui/react";
 
-const API_URL = "http://localhost:3000";
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function NewsletterPage() {
   const [name, setName] = useState("");

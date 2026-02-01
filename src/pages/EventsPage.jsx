@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost:3000";
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 function formatDateTime(value) {
   if (!value) return "";
@@ -43,7 +43,7 @@ function AddEventModal({ open, onClose, categories, onCreated }) {
 
   const toggleCategory = (id) => {
     setSelectedCats((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
   };
 
@@ -343,7 +343,7 @@ export default function EventsPage() {
 
   const toggleCategory = (id) => {
     setSelectedCats((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
   };
 
@@ -534,7 +534,7 @@ export default function EventsPage() {
             >
               {(ev.categoryIds || [])
                 .map((cid) =>
-                  categories.find((c) => String(c.id) === String(cid))
+                  categories.find((c) => String(c.id) === String(cid)),
                 )
                 .filter(Boolean)
                 .map((cat) => (

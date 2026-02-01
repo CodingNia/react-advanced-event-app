@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost:3000";
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 function formatDateTime(value) {
   if (!value) return "";
@@ -135,7 +135,7 @@ function EditEventModal({ open, event, categories, onClose, onUpdated }) {
 
   const toggleCategory = (id) => {
     setSelectedCategoryIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
   };
 
